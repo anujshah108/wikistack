@@ -9,7 +9,7 @@ const wikiRouter = require('./routes/wiki');
 
 
 app.use(express.static('public'));
-app.use(bodyparser)
+app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 // point nunjucks to the directory containing templates and turn off caching; configure returns an Environment 
 // instance, which we'll want to use to add Markdown support later.
