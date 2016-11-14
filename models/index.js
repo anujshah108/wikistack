@@ -5,15 +5,15 @@ var db = new Sequelize('postgres://localhost:5432/wikistack', {
 
 var Page = db.define('page', {
   title: {
-  	type: Sequelize.STRING, 
+  	type: Sequelize.STRING,
   	allowNull: false
   },
   urlTitle: {
-  	type: Sequelize.STRING, 
+  	type: Sequelize.STRING,
   	allowNull: false
   },
   content: {
-  	type: Sequelize.TEXT, 
+  	type: Sequelize.TEXT,
   	allowNull: false
   },
   status: {
@@ -40,13 +40,12 @@ var Page = db.define('page', {
     route: function() {
       return '/wiki/'+ this.urlTitle
     }
-
   }
 })
 
 var User = db.define('user', {
  	name: {
-  	type: Sequelize.STRING, 
+  	type: Sequelize.STRING,
   	allowNull: false
   },
   	email: {
@@ -54,8 +53,10 @@ var User = db.define('user', {
   	isEmail: true,
   	allowNull: false
   }
-  
+
 })
+
+Page.belongsTo(User, { as: 'author' });
 
 // Page.sync({force: true});
 // User.sync({force: true});

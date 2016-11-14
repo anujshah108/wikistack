@@ -4,6 +4,7 @@ const bodyparser = require('body-parser')
 const nunjucks = require('nunjucks')
 const sequelize = require('sequelize')
 const models = require('./models');
+const bluebird = require('bluebird');
 const server = app.listen(3001, function(){console.log('server listening')});
 const wikiRouter = require('./routes/wiki');
 
@@ -11,7 +12,7 @@ const wikiRouter = require('./routes/wiki');
 app.use(express.static('public'));
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
-// point nunjucks to the directory containing templates and turn off caching; configure returns an Environment 
+// point nunjucks to the directory containing templates and turn off caching; configure returns an Environment
 // instance, which we'll want to use to add Markdown support later.
 var env = nunjucks.configure('views', {noCache: true});
 // have res.render work with html files
