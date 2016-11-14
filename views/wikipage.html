@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <h3>{{title}} <small> (<a href="PLACEHOLDER_URL_TITLE/similar">Similar</a>)</small></h3>
-  <h4>by <a href="PLACEHOLDER-AUTHOR-URL"> {{page.author}} </a></h4>
-  <div>{{page.author.name}}</div>
+  <h3><a href="/wiki/{{page.urlTitle}}">{{title}}</a></h3>
+  <h3>{{page.tags}}
+  <h4>by <a href="/wiki/users/{{page.author.id}}"> {{page.author.name}} </a></h4>
   <hr/>
-  <div>PLACEHOLDER AUTHOR NAME WITH LINK TO AUTHOR PAGE</div>
   <div class="page-body"> {{content}} </div>
   <hr/>
   <a href="PLACEHOLDER_URL_TITLE/edit" class="btn btn-primary">edit this page</a>

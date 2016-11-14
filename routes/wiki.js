@@ -104,7 +104,8 @@ router.post('/', function(req, res, next) {
 
   var page = Page.build({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    tags: req.body.tags
   });
 
   return page.save().then(function (page) {
