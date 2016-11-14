@@ -72,10 +72,11 @@ router.get('/:urlTitle', function (req, res, next) {
   Page.findOne({
     where: {
       urlTitle: req.params.urlTitle
-    }
+    },
+    include: [{model: User, as: 'author'}]
   })
   .then(function(page){
-    console.log(page.getAuthor())
+    console.log(page)
     res.render('wikipage', {
       title: page.title,
       content: page.content,
